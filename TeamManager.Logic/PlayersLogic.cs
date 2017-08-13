@@ -24,7 +24,7 @@ namespace TeamManager.Logic
                                                 Expression<Func<Player, object>> orderBy = null, bool byDesc = false)
         {
             var players = GetPlayers(filter, pageInf, orderBy, byDesc).ToList();
-            var playerDTOs = AutoMapper.Mapper.Map<IEnumerable<PlayerDTO>>(players); ;
+            var playerDTOs = AutoMapper.Mapper.Map<IEnumerable<PlayerDTO>>(players);
 
             var feed = new Feed<PlayerDTO>() { Collection = playerDTOs };
 
@@ -60,23 +60,31 @@ namespace TeamManager.Logic
             return players;
         }
 
-        public virtual IEnumerable<Player> InsertOrUpdate(IEnumerable<Player> players)
+        public virtual IEnumerable<Player> InsertOrUpdate(IEnumerable<Player> players, bool includeTeams = true)
         {
-            //preserve teams
-            var teamsArr = players.Select(s => s.Teams).ToArray();
-            //set teams to null to update only players data
-            foreach (var player in players)
-                player.Teams = null;
+            ICollection<Team>[] teamsArr = null;
+
+            if (!includeTeams)
+            {
+                //preserve teams
+                teamsArr = players.Select(s => s.Teams).ToArray();
+                //set teams to null to update only players data
+                foreach (var player in players)
+                    player.Teams = null;
+            }
 
             var playersRepo = _unitOfWork.GetRepositiry<Player>();
             playersRepo.InsertOrUpdate(players);
             _unitOfWork.Save();
 
-            var insOrUpdPlayersArr = players.ToArray();
+            if (!includeTeams && teamsArr != null)
+            {
+                var insOrUpdPlayersArr = players.ToArray();
 
-            //set teams for updated players
-            for (int i = 0; i < Math.Max(teamsArr.Length, insOrUpdPlayersArr.Length); ++i)
-                insOrUpdPlayersArr[i].Teams = teamsArr[i];
+                //set teams for updated players
+                for (int i = 0; i < Math.Max(teamsArr.Length, insOrUpdPlayersArr.Length); ++i)
+                    insOrUpdPlayersArr[i].Teams = teamsArr[i];
+            }
 
             return players;
         }
