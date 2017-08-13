@@ -62,6 +62,10 @@
     <Compile Include="Migrations\201708131748541_init.Designer.cs">
       <DependentUpon>201708131748541_init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708131857560_autogen-ids.cs" />
+    <Compile Include="Migrations\201708131857560_autogen-ids.Designer.cs">
+      <DependentUpon>201708131857560_autogen-ids.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -78,6 +82,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201708131748541_init.resx">
       <DependentUpon>201708131748541_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708131857560_autogen-ids.resx">
+      <DependentUpon>201708131857560_autogen-ids.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

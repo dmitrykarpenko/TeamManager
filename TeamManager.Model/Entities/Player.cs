@@ -8,7 +8,6 @@ namespace TeamManager.Model.Entities
 {
     public class Player : BaseEntity
     {
-        public Guid? TeamId { get; set; } = null;
         public virtual ICollection<Team> Teams { get; set; }
     }
 }

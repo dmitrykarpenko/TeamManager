@@ -40,14 +40,22 @@
         </div>
     </div>
     <div class="form-group row">
-        <label class="control-label col-sm-2" for="newPlayerTeam">Team:</label>
+        <label class="control-label col-sm-2" for="newPlayerTeam">Add:</label>
         <div class="col-sm-10">
             <select data-bind="options: $root.availableTeams,
                                 optionsText: function(item) {  return item.Name() + ' (ID: ' + item.Id + ')' },
                                 optionsValue: function(item) { return item.Id; },
-                                value: newPlayer().TeamId,
+                                value: newPlayer().SelectedTeamId,
                                 optionsCaption: '(select a team)'"
                             class="selectpicker pull-left select-block" id="newPlayerTeam" data-live-search="true" data-width="fit"></select>
+        </div>
+        <div data-bind="if: $data.Teams && Teams() && Teams().length > 0" class="col-sm-12">
+            <label class="control-label col-sm-2">Teams:</label>
+            <div class="col-sm-10">
+                <ul data-bind="foreach: Teams" class="list-group">
+                    <li data-bind="Name" class="list-group-item"></li>
+                </ul>
+            </div>
         </div>
     </div>
     <div class="col-md-7 col-md-offset-3">
@@ -71,7 +79,7 @@
         <thead>
             <tr>
                 <th>Player (name)</th>
-                <th>Player's team (name)</th>
+                <th>Player's teams (name)</th>
                 <th></th>
             </tr>
         </thead>
@@ -81,13 +89,10 @@
                     <input type="text" data-bind='value: Name' class="form-control" placeholder="name" />@*<br>*@
                     @*<span data-bind='visible: Name.hasError, text: Name.validationMessage' class="text-danger">&nbsp;</span>*@
                 </td>
-                <td class="col-sm-6">
-                    <select data-bind="options: $root.availableTeams,
-                                        optionsText: function(item) {  return item.Name() + ' (ID: ' + item.Id + ')' },
-                                        optionsValue: 'Id',
-                                        value: $data.TeamId,
-                                        optionsCaption: '(select a team)'"
-                            class="selectpicker pull-left" data-live-search="true"></select>
+                <td data-bind="if: $data.Teams && Teams() && Teams().length > 0" class="col-sm-6">
+                    <ul data-bind="foreach: Teams" class="list-group">
+                        <li data-bind="Name" class="list-group-item"></li>
+                    </ul>
                 </td>
                 <td><a href='#' data-bind='click: $root.deletePlayer' class="btn btn-danger">Delete</a></td>
             </tr>

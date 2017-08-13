@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace TeamManager.Web.ViewModels
 {
@@ -6,6 +7,6 @@ namespace TeamManager.Web.ViewModels
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public TeamVM Team { get; set; }
+        public IEnumerable<TeamVM> Teams { get; set; }
     }
 }

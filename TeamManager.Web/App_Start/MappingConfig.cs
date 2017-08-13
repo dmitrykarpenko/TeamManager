@@ -30,10 +30,7 @@ namespace TeamManager.Web
                                  opt => opt.MapFrom(src => src.SelectableTeams.Where(sg => sg.Selected)));
 
                 config.CreateMap<Player, PlayerVM>();
-                config.CreateMap<PlayerVM, Player>()
-                      .ForMember(dest => dest.TeamId,
-                                 opt => opt.MapFrom(src => src.Team != null & src.Team.Id != Guid.Empty ?
-                                                    (Guid?)src.Team.Id : null));
+                config.CreateMap<PlayerVM, Player>();
 
                 config.CreateMap<Team, TeamDTO>();
                 config.CreateMap<Course, CourseDTO>();
