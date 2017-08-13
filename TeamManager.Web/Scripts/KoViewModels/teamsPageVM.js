@@ -37,7 +37,7 @@ var TeamsPageVM = function (vmData) {
     };
 
     self.deleteTeam = function (team) {
-        if (team.Id)
+        if (context.notEmptyId(team.Id))
             $.ajax({
                 url: "/Team/Delete",
                 type: "POST",

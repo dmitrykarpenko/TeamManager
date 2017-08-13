@@ -31,7 +31,7 @@ var PlayersPageVM = function (vmData) {
     };
 
     self.deletePlayer = function (player) {
-        if (player.Id !== 0)
+        if (player.Id !== context.emptyGuid)
             $.ajax({
                 url: "/Player/Delete",
                 type: "POST",

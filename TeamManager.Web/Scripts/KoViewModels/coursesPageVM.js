@@ -37,7 +37,7 @@ var CoursesPageVM = function (vmData) {
     };
 
     self.deleteCourse = function (course) {
-        if (course.Id)
+        if (context.notEmptyId(course.Id))
             $.ajax({
                 url: "/Course/Delete",
                 type: "POST",

@@ -3,13 +3,13 @@
 var CourseVM = function (id, name) {
     var self = this;
 
-    self.Id = id || 0;
+    self.Id = id || context.emptyGuid;
     self.Name = ko.isComputed(name) ? name : ko.observable(name || "");
     self.Name.extend({ required: true });//"Please enter course's name" });
     self.errors = ko.validation.group(self, { deep: false });
 
     self.editUrl = function () {
-        return "/Course/AddNewOrEdit/" + (self.Id != 0 ? self.Id : "");
+        return "/Course/AddNewOrEdit/" + (self.Id != context.emptyGuid ? self.Id : "");
     };
 
     self.save = function (onSuccess, parentVM) {
