@@ -1,0 +1,105 @@
+﻿@model TeamManager.Web.ViewModels.PlayersPageVM
+@using System.Web.Script.Serialization
+
+@{
+    ViewBag.Title = "Players";
+    string data = new JavaScriptSerializer().Serialize(Model);
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/knockout")
+
+    <script src="~/Scripts/KoViewModels/teamVM.js"></script>
+    <script src="~/Scripts/KoViewModels/playerVM.js"></script>
+    <script src="~/Scripts/KoViewModels/playersPageVM.js"></script>
+
+    <script type="text/javascript">
+        (function(){
+            //ko.extenders.required = koHelpers.koRequiredExtender;
+            koHelpers.koInitValidation();
+
+            var data = @Html.Raw(data);
+            var viewModel = new PlayersPageVM(data);
+
+            ko.applyBindings(viewModel);
+        })();
+    </script>
+}
+
+<div class="jumbotron">
+    <h1>@ViewBag.Title</h1>
+    Total count: <span data-bind='text: countOfAllPlayers'>&nbsp;</span> player(s)
+</div>
+<form class="form-horizontal col-md-4">
+    <h2>Add new player</h2>
+    <div class="form-group row">
+        <label class="control-label col-sm-2" for="newPlayerName">Name:</label>
+        <div class="col-sm-10">
+            <input type="text" data-bind="value: newPlayer().Name" class="form-control" id="newPlayerName" placeholder="enter name" />
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-sm-2" for="newPlayerTeam">Team:</label>
+        <div class="col-sm-10">
+            <select data-bind="options: $root.availableTeams,
+                                optionsText: function(item) {  return item.Name() + ' (ID: ' + item.Id + ')' },
+                                optionsValue: function(item) { return item.Id; },
+                                value: newPlayer().TeamId,
+                                optionsCaption: '(select a team)'"
+                            class="selectpicker pull-left select-block" id="newPlayerTeam" data-live-search="true" data-width="fit"></select>
+        </div>
+    </div>
+    <div class="col-md-7 col-md-offset-3">
+        @*enable: newPlayer.isValid*@
+        <button class="btn btn-warning" data-bind="click: saveNewPlayer" type="submit">Save new player</button>
+    </div>
+</form>
+
+<form class="col-md-8">
+    <h2>All players</h2>
+    <div class="alert alert-info alert-dismissable fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+        We have <span data-bind='text: players().length'>&nbsp;</span> player(s) shown:
+    </div>
+
+    <div data-bind='visible: message().length > 0' class="alert alert-success alert-dismissable fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+        <span data-bind='text: message'>&nbsp;</span>
+    </div>
+    <table data-bind='visible: players().length > 0' class="table table-hover table-striped table-condensed">
+        <thead>
+            <tr>
+                <th>Player (name)</th>
+                <th>Player's team (name)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody data-bind='foreach: players'>
+            <tr class="form-group">
+                <td class="col-sm-6">
+                    <input type="text" data-bind='value: Name' class="form-control" placeholder="name" />@*<br>*@
+                    @*<span data-bind='visible: Name.hasError, text: Name.validationMessage' class="text-danger">&nbsp;</span>*@
+                </td>
+                <td class="col-sm-6">
+                    <select data-bind="options: $root.availableTeams,
+                                        optionsText: function(item) {  return item.Name() + ' (ID: ' + item.Id + ')' },
+                                        optionsValue: 'Id',
+                                        value: $data.TeamId,
+                                        optionsCaption: '(select a team)'"
+                            class="selectpicker pull-left" data-live-search="true"></select>
+                </td>
+                <td><a href='#' data-bind='click: $root.deletePlayer' class="btn btn-danger">Delete</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="col-md-9 col-md-offset-2">
+        <button class="btn btn-default" data-bind='click: increasePageSizeAndGetPage.bind($data, 10)'>
+            <span class="glyphicon glyphicon-chevron-down"></span> Get ten more
+        </button>
+        <button class="btn btn-success" data-bind='click: getPage'>Refresh table</button>
+        <button class="btn btn-success" data-bind='click: addNewPlayer'>Add new row</button>
+        <button class="btn btn-warning" data-bind='enable: players().length > 0, click: saveAll' type='submit'>Save all</button>
+    </div>
+</form>
