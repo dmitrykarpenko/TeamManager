@@ -1,19 +1,23 @@
 "use strict";
 
-var PlayerVM = function (id, name, teams) {
+var PlayerVM = function (id, name, teams, availableTeams) {
     var self = this;
 
     self.Id = id || null;
     self.Name = ko.observable(name || "").extend({ required: true });//"Please enter player's a name" });
-    self.Teams = ko.observable(teams || null);
+    self.Teams = ko.observableArray(teams || []);
 
     self.SelectedTeamId = ko.observable(null);
     self.SelectedTeamId.subscribe(function (val) {
         if (val) {
             var newTeam = availableTeams.find(function (x) {
-                return x().Id == val;
+                return x.Id == val;
             });
-            self.Teams.push(newTeam);
+
+            if (newTeam && !self.Teams().some(function (x) { return x.Id == newTeam.Id; })) {
+                self.Teams.push(newTeam);
+            }
+            
             self.SelectedTeamId(null);
         }
     });

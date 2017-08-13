@@ -8,7 +8,7 @@ namespace TeamManager.Logic.DTOs
 {
     public class BaseDTO : IDTO
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; }
     }
 }

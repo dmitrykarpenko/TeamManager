@@ -35,12 +35,12 @@
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - TeamManager ASP.NET Application</p>
-        </footer>
     </div>
-
+    <div class="clear-fix"></div>
+    <hr />
+    <footer class="row">
+        <p class="col-sm-offset-5 col-sm-7">&copy; @DateTime.Now.Year - TeamManager ASP.NET Application</p>
+    </footer>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

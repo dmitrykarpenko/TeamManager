@@ -8,7 +8,7 @@ namespace TeamManager.Logic.DTOs
 {
     public interface IDTO
     {
-        int Id { get; set; }
+        Guid Id { get; set; }
         string Name { get; set; }
     }
 }
