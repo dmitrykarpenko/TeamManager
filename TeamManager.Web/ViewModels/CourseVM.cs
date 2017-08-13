@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 
@@ -6,7 +7,7 @@ namespace TeamManager.Web.ViewModels
 {
     public class CourseVM
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         [Required]
         public string Name { get; set; }
         //ICollection<int>

@@ -13,7 +13,7 @@ namespace TeamManager.DataLayer.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201708131258419_init"; }
+            get { return "201708131748541_init"; }
         }
         
         string IMigrationMetadata.Source

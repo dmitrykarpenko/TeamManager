@@ -32,8 +32,8 @@ namespace TeamManager.Web
                 config.CreateMap<Player, PlayerVM>();
                 config.CreateMap<PlayerVM, Player>()
                       .ForMember(dest => dest.TeamId,
-                                 opt => opt.MapFrom(src => src.Team != null & src.Team.Id != 0 ?
-                                                    (int?)src.Team.Id : null));
+                                 opt => opt.MapFrom(src => src.Team != null & src.Team.Id != Guid.Empty ?
+                                                    (Guid?)src.Team.Id : null));
 
                 config.CreateMap<Team, TeamDTO>();
                 config.CreateMap<Course, CourseDTO>();

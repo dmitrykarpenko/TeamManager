@@ -38,7 +38,7 @@ namespace TeamManager.Logic
             return insOrUpdCourses;
         }
 
-        public virtual IEnumerable<Course> Delete(int courseId)
+        public virtual IEnumerable<Course> Delete(Guid courseId)
         {
             var coursesRepo = _unitOfWork.GetRepositiry<Course>();
             var retCourses = coursesRepo.Delete(courseId);

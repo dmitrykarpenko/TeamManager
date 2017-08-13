@@ -40,6 +40,15 @@ namespace TeamManager.DataLayer.Concrete
                     x.ToTable("TeamCourses");
                 });
 
+            modelBuilder.Entity<Team>()
+                .HasMany(g => g.Players).WithMany(c => c.Teams)
+                .Map(x =>
+                {
+                    x.MapLeftKey("TeamId");
+                    x.MapRightKey("PlayerId");
+                    x.ToTable("TeamPlayers");
+                });
+
             // Courses
 
             modelBuilder.Configurations.Add(new CoursesConfiguration());

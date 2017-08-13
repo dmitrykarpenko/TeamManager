@@ -16,7 +16,7 @@ namespace TeamManager.DataLayer.Abstract
                            Expression<Func<T, object>> orderBy = null, bool byDesc = false);
         int Count(Expression<Func<T, bool>> filter = null);
         IEnumerable<T> InsertOrUpdate(IEnumerable<T> entities);
-        IEnumerable<T> Delete(int id);
+        IEnumerable<T> Delete(Guid id);
         IEnumerable<T> Delete(Expression<Func<T, bool>> filter);
         int Save();
     }

@@ -58,9 +58,9 @@
     <Compile Include="Configurations\TeamsConfiguration.cs" />
     <Compile Include="Configurations\PlayersConfiguration.cs" />
     <Compile Include="Helpers\ReflectionHelpers.cs" />
-    <Compile Include="Migrations\201708131258419_init.cs" />
-    <Compile Include="Migrations\201708131258419_init.Designer.cs">
-      <DependentUpon>201708131258419_init.cs</DependentUpon>
+    <Compile Include="Migrations\201708131748541_init.cs" />
+    <Compile Include="Migrations\201708131748541_init.Designer.cs">
+      <DependentUpon>201708131748541_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -76,8 +76,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201708131258419_init.resx">
-      <DependentUpon>201708131258419_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201708131748541_init.resx">
+      <DependentUpon>201708131748541_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

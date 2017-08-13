@@ -76,10 +76,10 @@ namespace TeamManager.DataLayer.Concrete
                 //otherwise all items from inner collections will be added and probably duplicated
                 foreach (var col in entityCollections)
                     foreach (var el in col)
-                        _context.Entry(el).State = el.Id == 0 ? EntityState.Added : EntityState.Unchanged;
+                        _context.Entry(el).State = el.Id == Guid.Empty ? EntityState.Added : EntityState.Unchanged;
 
                 _dbSet.Add(entity);
-                _context.Entry(entity).State = entity.Id == 0 ? EntityState.Added : EntityState.Modified;
+                _context.Entry(entity).State = entity.Id == Guid.Empty ? EntityState.Added : EntityState.Modified;
 
                 //todo: consider setting all subentities state to added, modified or unchanged by Id
             }
@@ -87,7 +87,7 @@ namespace TeamManager.DataLayer.Concrete
             return ret;
         }
 
-        public virtual IEnumerable<T> Delete(int id)
+        public virtual IEnumerable<T> Delete(Guid id)
         {
             return Delete(ent => ent.Id == id);
         }

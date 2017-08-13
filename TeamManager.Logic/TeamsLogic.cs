@@ -38,7 +38,7 @@ namespace TeamManager.Logic
             return insOrUpdTeams;
         }
 
-        public virtual IEnumerable<Team> Delete(int teamId)
+        public virtual IEnumerable<Team> Delete(Guid teamId)
         {
             var teamsRepo = _unitOfWork.GetRepositiry<Team>();
             var retTeams = teamsRepo.Delete(teamId);

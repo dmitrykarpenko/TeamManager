@@ -59,9 +59,9 @@ namespace TeamManager.Web.Controllers
             return Json(new { players = retPlayerVMs });
         }
 
-        public JsonResult Delete(int id)
+        public JsonResult Delete(Guid id)
         {
-            if (id <= 0)
+            if (id == Guid.Empty)
             {
                 Response.StatusCode = 400;
                 return Json(new { error = "Invalid player id!" });

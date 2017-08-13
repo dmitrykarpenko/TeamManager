@@ -37,14 +37,14 @@ namespace TeamManager.Web.Controllers
             return View(viewModel);
         }
 
-        public ActionResult AddNewOrEdit(int? id)
+        public ActionResult AddNewOrEdit(Guid? id)
         {
             CourseVM vm = null;
             IEnumerable<Team> notSelectedTeams = null;
 
             if (id != null)
             {
-                int idVal = id.GetValueOrDefault();
+                Guid idVal = id.GetValueOrDefault();
                 var course = _coursesLogic.GetCourses(c => c.Id == idVal).FirstOrDefault();
                 if (course != null)
                 {
@@ -93,9 +93,9 @@ namespace TeamManager.Web.Controllers
             return Json(new { courses = courseVMs });
         }
 
-        public JsonResult Delete(int id)
+        public JsonResult Delete(Guid id)
         {
-            if (id <= 0)
+            if (id == Guid.Empty)
             {
                 Response.StatusCode = 400;
                 return Json(new { error = "Invalid course id!" });

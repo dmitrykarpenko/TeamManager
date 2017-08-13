@@ -8,6 +8,6 @@ namespace TeamManager.Logic.DTOs
 {
     public class PlayerDTO : BaseDTO
     {
-        public TeamDTO Team { get; set; }
+        public IEnumerable<TeamDTO> Teams { get; set; }
     }
 }

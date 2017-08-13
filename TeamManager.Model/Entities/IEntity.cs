@@ -1,8 +1,10 @@
-﻿namespace TeamManager.Model.Entities
+﻿using System;
+
+namespace TeamManager.Model.Entities
 {
     public interface IEntity
     {
-        int Id { get; set; }
+        Guid Id { get; set; }
         string Name { get; set; }
     }
 }

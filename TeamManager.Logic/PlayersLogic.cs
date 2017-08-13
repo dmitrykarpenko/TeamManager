@@ -55,7 +55,7 @@ namespace TeamManager.Logic
         {
             var playersRepo = _unitOfWork.GetRepositiry<Player>();
 
-            var players = playersRepo.Get(filter, pageInf, s => s.Team, orderBy, byDesc);
+            var players = playersRepo.Get(filter, pageInf, s => s.Teams, orderBy, byDesc);
 
             return players;
         }
@@ -63,10 +63,10 @@ namespace TeamManager.Logic
         public virtual IEnumerable<Player> InsertOrUpdate(IEnumerable<Player> players)
         {
             //preserve teams
-            var teamsArr = players.Select(s => s.Team).ToArray();
+            var teamsArr = players.Select(s => s.Teams).ToArray();
             //set teams to null to update only players data
             foreach (var player in players)
-                player.Team = null;
+                player.Teams = null;
 
             var playersRepo = _unitOfWork.GetRepositiry<Player>();
             playersRepo.InsertOrUpdate(players);
@@ -76,12 +76,12 @@ namespace TeamManager.Logic
 
             //set teams for updated players
             for (int i = 0; i < Math.Max(teamsArr.Length, insOrUpdPlayersArr.Length); ++i)
-                insOrUpdPlayersArr[i].Team = teamsArr[i];
+                insOrUpdPlayersArr[i].Teams = teamsArr[i];
 
             return players;
         }
 
-        public virtual IEnumerable<Player> Delete(int playerId)
+        public virtual IEnumerable<Player> Delete(Guid playerId)
         {
             var playersRepo = _unitOfWork.GetRepositiry<Player>();
             var retPlayers = playersRepo.Delete(playerId);
