@@ -15,7 +15,7 @@ namespace TeamManager.DataLayer.Concrete
         private ConcurrentDictionary<Type, object> _repos = new ConcurrentDictionary<Type, object>();
 
         //all entities which could have a repository
-        private static readonly List<Type> _entitiesWithRepos = new List<Type>() { typeof(Player), typeof(Team), typeof(Course) };
+        private static readonly List<Type> _entitiesWithRepos = new List<Type>() { typeof(Player), typeof(Team) };
 
         public IRepository<T> GetRepositiry<T>() where T : class, IEntity
         {

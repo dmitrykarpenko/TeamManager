@@ -54,7 +54,6 @@
     <Compile Include="Concrete\BaseEFRepositiry.cs" />
     <Compile Include="Concrete\EFTeamManagerContext.cs" />
     <Compile Include="Concrete\EFUnitOfWork.cs" />
-    <Compile Include="Configurations\CoursesConfiguration.cs" />
     <Compile Include="Configurations\TeamsConfiguration.cs" />
     <Compile Include="Configurations\PlayersConfiguration.cs" />
     <Compile Include="Helpers\ReflectionHelpers.cs" />
@@ -65,6 +64,10 @@
     <Compile Include="Migrations\201708131857560_autogen-ids.cs" />
     <Compile Include="Migrations\201708131857560_autogen-ids.Designer.cs">
       <DependentUpon>201708131857560_autogen-ids.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708141949599_remove-redundant-entity.cs" />
+    <Compile Include="Migrations\201708141949599_remove-redundant-entity.Designer.cs">
+      <DependentUpon>201708141949599_remove-redundant-entity.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -85,6 +88,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708131857560_autogen-ids.resx">
       <DependentUpon>201708131857560_autogen-ids.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708141949599_remove-redundant-entity.resx">
+      <DependentUpon>201708141949599_remove-redundant-entity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

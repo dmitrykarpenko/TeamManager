@@ -174,7 +174,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\TeamController.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -186,8 +185,6 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\CoursesPageVM.cs" />
-    <Compile Include="ViewModels\CourseVM.cs" />
     <Compile Include="ViewModels\SelectableTeamVM.cs" />
     <Compile Include="ViewModels\TeamVM.cs" />
     <Compile Include="ViewModels\TeamsPageVM.cs" />
@@ -289,8 +286,6 @@
     <Content Include="Scripts\knockout.validation.js" />
     <Content Include="Scripts\knockout.validation.min.js" />
     <Content Include="Scripts\koHelpers\koHelpers.js" />
-    <Content Include="Scripts\koViewModels\coursesPageVM.js" />
-    <Content Include="Scripts\koViewModels\courseVM.js" />
     <Content Include="Scripts\koViewModels\teamVM.js" />
     <Content Include="Scripts\koViewModels\teamsPageVM.js" />
     <Content Include="Scripts\koViewModels\playerVM.js" />
@@ -333,9 +328,6 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\knockout.validation.min.js.map" />
     <Content Include="Views\Team\ShowAll.cshtml" />
-    <Content Include="Views\Course\ShowAll.cshtml" />
-    <Content Include="Views\Course\AddNewOrEdit.cshtml" />
-    <Content Include="Views\Course\EditorTemplates\SelectableTeamVM.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

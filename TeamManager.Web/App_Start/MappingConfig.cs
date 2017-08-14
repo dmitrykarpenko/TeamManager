@@ -22,22 +22,13 @@ namespace TeamManager.Web
                 config.CreateMap<Team, SelectableTeamVM>();
                 config.CreateMap<SelectableTeamVM, Team>();
 
-                config.CreateMap<Course, CourseVM>()
-                      .ForMember(dest => dest.SelectableTeams,
-                                 opt => opt.MapFrom(src => src.Teams));
-                config.CreateMap<CourseVM, Course>()
-                      .ForMember(dest => dest.Teams,
-                                 opt => opt.MapFrom(src => src.SelectableTeams.Where(sg => sg.Selected)));
-
                 config.CreateMap<Player, PlayerVM>();
                 config.CreateMap<PlayerVM, Player>();
 
                 config.CreateMap<Team, TeamDTO>();
-                config.CreateMap<Course, CourseDTO>();
                 config.CreateMap<Player, PlayerDTO>();
 
                 config.CreateMap<TeamDTO, TeamVM>();
-                config.CreateMap<CourseDTO, CourseVM>();
                 config.CreateMap<PlayerDTO, PlayerVM>();
             });
         }

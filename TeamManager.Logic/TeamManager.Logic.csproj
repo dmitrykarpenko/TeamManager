@@ -46,11 +46,9 @@
   <ItemGroup>
     <Compile Include="DTOs\BaseDTO.cs" />
     <Compile Include="DTOs\Feed.cs" />
-    <Compile Include="DTOs\CourseDTO.cs" />
     <Compile Include="DTOs\TeamDTO.cs" />
     <Compile Include="DTOs\IDTO.cs" />
     <Compile Include="DTOs\PlayerDTO.cs" />
-    <Compile Include="CoursesLogic.cs" />
     <Compile Include="TeamsLogic.cs" />
     <Compile Include="PlayersLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

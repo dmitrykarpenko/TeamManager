@@ -19,7 +19,6 @@ namespace TeamManager.CompositionRoot
             builder.RegisterType<EFUnitOfWork>().As<IUnitOfWork>();
             builder.RegisterType<PlayersLogic>();
             builder.RegisterType<TeamsLogic>();
-            builder.RegisterType<CoursesLogic>();
 
             var container = builder.Build();
 

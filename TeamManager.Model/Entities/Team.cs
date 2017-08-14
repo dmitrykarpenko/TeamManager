@@ -9,6 +9,5 @@ namespace TeamManager.Model.Entities
     public class Team : BaseEntity
     {
         public virtual ICollection<Player> Players { get; set; }
-        public virtual ICollection<Course> Courses { get; set; }
     }
 }
