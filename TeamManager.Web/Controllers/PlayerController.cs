@@ -42,7 +42,8 @@ namespace TeamManager.Web.Controllers
                 Players = playerVMs,
                 AvailableTeams = availableTeamVMs,
                 PageInf = pageInf,
-                CountOfAllPlayers = playersFeed.Count
+                CountOfAllPlayers = playersFeed.Count,
+                PlayerPositionEnum = _playersLogic.GetPlayerPositionDict()
             };
 
             return View(viewModel);

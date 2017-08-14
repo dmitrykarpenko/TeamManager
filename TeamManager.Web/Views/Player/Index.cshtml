@@ -4,6 +4,7 @@
 @{
     ViewBag.Title = "Players";
     string data = new JavaScriptSerializer().Serialize(Model);
+    string position = new JavaScriptSerializer().Serialize(Model.PlayerPositionEnum);
 }
 
 @section scripts
@@ -16,6 +17,8 @@
 
     <script type="text/javascript">
         (function(){
+            context.position = @Html.Raw(position);
+
             //ko.extenders.required = koHelpers.koRequiredExtender;
             koHelpers.koInitValidation();
 

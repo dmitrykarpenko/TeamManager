@@ -8,6 +8,8 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using TeamManager.DataLayer.Helpers;
+using TeamManager.Model.Enums;
 
 namespace TeamManager.Logic
 {
@@ -60,7 +62,7 @@ namespace TeamManager.Logic
             return players;
         }
 
-        public virtual IEnumerable<Player> InsertOrUpdate(IEnumerable<Player> players, bool includeTeams = true)
+        public IEnumerable<Player> InsertOrUpdate(IEnumerable<Player> players, bool includeTeams = true)
         {
             ICollection<Team>[] teamsArr = null;
 
@@ -89,13 +91,18 @@ namespace TeamManager.Logic
             return players;
         }
 
-        public virtual IEnumerable<Player> Delete(Guid playerId)
+        public IEnumerable<Player> Delete(Guid playerId)
         {
             var playersRepo = _unitOfWork.GetRepositiry<Player>();
             var retPlayers = playersRepo.Delete(playerId);
             _unitOfWork.Save();
 
             return retPlayers;
+        }
+
+        public Dictionary<string, int> GetPlayerPositionDict()
+        {
+            return ReflectionHelpers.EnumToDictionary<PlayerPosition>();
         }
     }
 }

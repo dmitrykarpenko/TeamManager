@@ -9,5 +9,7 @@ namespace TeamManager.Web.ViewModels
         public IEnumerable<TeamVM> AvailableTeams { get; set; }
         public PageInf PageInf { get; set; }
         public int CountOfAllPlayers { get; set; }
+
+        public Dictionary<string, int> PlayerPositionEnum { get; set; }
     }
 }

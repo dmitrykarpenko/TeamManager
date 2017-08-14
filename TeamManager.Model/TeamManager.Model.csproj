@@ -46,6 +46,7 @@
     <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Entities\TeamPlayer.cs" />
     <Compile Include="Entities\Player.cs" />
+    <Compile Include="Enums\PlayerPosition.cs" />
     <Compile Include="Helpers\PageInf.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

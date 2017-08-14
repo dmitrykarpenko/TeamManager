@@ -3,6 +3,13 @@
 var PlayersPageVM = function (vmData) {
     var self = this;
 
+    var po = Object.keys(context.position).map(function (x, i) {
+        return {
+            Id: context.position[x],
+            Name: x
+        };
+    });
+    self.positonOptions = ko.observableArray(po);
     self.availableTeams = toArrayOfTeamVMs(vmData.AvailableTeams);
 
     self.players = ko.observableArray(toArrayOfPlayerVMs(vmData.Players, self.availableTeams));

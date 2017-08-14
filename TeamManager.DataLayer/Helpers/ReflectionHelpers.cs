@@ -31,5 +31,18 @@ namespace TeamManager.DataLayer.Helpers
             }
             return res;
         }
+
+        public static Dictionary<string, int> EnumToDictionary<TEnum>() where TEnum : struct, IConvertible
+        {
+            var resultDict = new Dictionary<string, int>();
+            var enums = Enum.GetValues(typeof(TEnum));
+
+            foreach (var e in enums)
+            {
+                resultDict.Add(e.ToString(), Convert.ToInt32(e));
+            }
+
+            return resultDict;
+        }
     }
 }
